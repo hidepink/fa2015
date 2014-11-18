@@ -1,10 +1,306 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+    Remove this if you use the .htaccess -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>20인 보호명단뽑기!</title>
+    <meta name="description" content="">
+    <meta name="author" content="Sehwan Kim">
+
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+    <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="../../Downloads/Baseball_My_Team%202/css/style.css">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '291275374395819',
+                status: true,
+                cookie: true,
+                xfbml: true,
+                version: 'v2.2'
+            });
+        };
+        ( function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+
+        FB.Event.subscribe('auth.login', function (response) {
+            document.location.reload();
+        });
+
+        function fb_share(myresultStr) {
+            FB.getLoginStatus(function (response) {
+                if (response.status === 'connected') {
+                    var r = confirm("선정결과를 페이스북으로 공유하시겠습니까?");
+                    if (r == true) {
+                        var app_link = "http://kimsehwan.com/kia20/";
+                        var app_thumnail = "http://kimsehwan.com/kia20/";
+                        //var app_thumnail="http://ghkdxodn.tistory.com/"+data.image_name;
+                        //var app_thumnail="http://ghkdxodn.tistory.com/show_img.php?no="+data.no;
+                        FB.api('/me/feed', 'post', {message: myresultStr + "\n" + app_link, link: app_thumnail});
+                        //FB.api('/me/feed', 'post', {message: myresultStr+"\n"+app_link});
+                        alert('공유되었습니다.\n');
+                    } else {
+
+                    }
+
+                    // 안드로이드에서는 등록 잘되는데.. 아이폰에서 등록 안됨 ㅡㅡ
+
+                } else if (response.status === 'not_authorized') {
+                    //FB.login();
+                    FB.login(function () {
+                    }, {scope: 'publish_actions'}); //로그인하면서 글쓰기 권한
+                } else {
+                    //FB.login()
+                    FB.login(function () {
+                    }, {scope: 'publish_actions'}); //로그인하면서 글쓰기 권한
+                }
+            });
+        }
+    </script>
 </head>
+
 <body>
-TEST
+<div
+        class="fb-like"
+        data-share="true"
+        data-width="450"
+        data-show-faces="true"></div>
+<div id="board">
+    <h1><img src="../../Downloads/Baseball_My_Team%202/images/kia/logo.jpg"/> 20인 보호명단 뽑아보기</h1>
+
+    <h3>현재보호선수: <span class="player-count">0</span>명 / 20명</h3>
+</div>
+<div class="clear"></div>
+
+<div class="myPick">
+    <h2>나의 선택</h2>
+
+    <div class="myPickContainer"></div>
+</div>
+
+<div class="clear"></div>
+<button class="sendmessage">
+    페이스북에 결과 올리기
+</button>
+<button class="copymessage">
+    클립보드에 복사하기
+</button>
+<div class="clear"></div>
+
+<h2>투수</h2>
+
+<div id="pitcher">
+
+</div>
+
+<div class="clear"></div>
+<h2>내야수</h2>
+
+<div id="in">
+
+</div>
+
+<div class="clear"></div>
+<h2>외야수</h2>
+
+<div id="out">
+
+</div>
+
+<div class="clear"></div>
+<h2>포수</h2>
+
+<div id="catcher">
+
+</div>
+
+<div class="clear" style="padding-top:50px;">
+    * 본 사이트에 사용된 이미지는 프로야구 각 구단 홈페이지에서 캡쳐했습니다.
+</div>
 </body>
+
+<script src="../../Downloads/Baseball_My_Team%202/data/kia.json"></script>
+<script>
+    $(document).ready(function () {
+        var count = 0;
+
+        function getPlayers(arr, id) {
+            var out = "";
+            var i;
+            var path;
+            switch (id) {
+                case "pitcher":
+                    path = "images/kia/p/";
+                    break;
+                case "in":
+                    path = "images/kia/i/";
+                    break;
+                case "out":
+                    path = "images/kia/o/";
+                    break;
+                case "catcher":
+                    path = "images/kia/c/";
+                    break;
+            }
+
+            arr = sortJSON(arr, 'pay', '321');
+
+            for (i = 0; i < arr.length; i++) {
+                if (arr[i].stat == "FA") {
+                    out += '<div class="fa ' + id + i + '"><a class="player-card ' + '" href="#">';
+                } else {
+                    out += '<div class="' + id + i + '"><a class="player-card ' + '" href="#">';
+                }
+                if (arr[i].stat == "FA") {
+                    out += '<span class="player-watermark">FA</span>';
+                }
+                if (arr[i].stat == "외국인") {
+                    out += '<span class="player-watermark">외</span>';
+                }
+                out += '<img class="player-image" src="' + path + arr[i].img + '.png"/>' + '<span class="player-text"> ' + arr[i].name + '</span>' + '</a></div>';
+            }
+            $("#" + id).html(out);
+        }
+
+        function sortJSON(data, key, way) {
+            return data.sort(function (a, b) {
+                var x = Number(a[key]);
+                var y = Number(b[key]);
+                if (way === '123') {
+                    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+                }
+                if (way === '321') {
+                    return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+                }
+            });
+        }
+
+        getPlayers(arrPitchers, "pitcher");
+        getPlayers(arrOutfilders, "out");
+        getPlayers(arrInfilders, "in");
+        getPlayers(arrCatchers, "catcher");
+
+        $(".player-card").live("mouseover", function () {
+            $(this).css({
+                "border": "5px solid #cccccc",
+                "padding": "1px"
+            });
+        });
+        $(".player-card").live("mouseout", function () {
+            $(this).css({
+                "border": "1px solid #eeeeee",
+                "padding": "5px"
+            });
+        });
+        $(".player-card").live("click", function () {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if ($(this).hasClass("active")) {
+                $(".myPickContainer").find("." + $(this).parent().attr("class")).hide();
+
+                $("." + $(this).parent().attr("class") + " > a").removeClass("active");
+                $("." + $(this).parent().attr("class") + " > a").css({
+                    "background": "#ffffff",
+                    "color": "#333333"
+                });
+
+                count--;
+
+                if (count <= 0) {
+                    // $(".myPickContainer").html('<h3>아직 아무도 선택하지 않았습니다.</h3>');
+                }
+            } else {
+                if (count >= 20) {
+                    alert("보호명단 20명을 모두 선택했습니다!");
+                    return false;
+                }
+                if ($(this).parent().hasClass("fa")) {
+                    alert("FA는 보호명단에 묶이지 않습니다");
+                    return false;
+                }
+                $(this).addClass("active");
+
+                count++;
+
+                $(this).css({
+                    "border": "1px solid #eeeeee",
+                    "padding": "5px"
+                });
+                $(this).css({
+                    "background": "#000000",
+                    "color": "#ff3333"
+                });
+                $(this).parent().clone().removeClass("active").appendTo($(".myPickContainer"));
+            }
+
+            $(".player-count").html(count);
+
+        });
+
+        function getList() {
+            var str = "내가뽑은 기아타이거즈 KT특별지명 20명 보호선수 명단: \n";
+            var strMax = $(".myPickContainer").contents().size();
+
+            for (i = 0; i < strMax; i++) {
+                str += $(".myPickContainer").children().eq(i).find(".player-text").html();
+            }
+
+            return str;
+        }
+
+        function copyToClipboard() {
+            var text = getList();
+            if (window.clipboardData) {
+                // IE처리
+                // 클립보드에 문자열 복사
+                window.clipboardData.setData('text', text);
+
+                // 클립보드의 내용 가져오기
+                // window.clipboardData.getData('Text');
+
+                // 클립보드의 내용 지우기
+                // window.clipboardData.clearData("Text");
+            } else {
+                // 비IE 처리    
+                window.prompt("Ctrl+C를 눌러 복사하세요!, Enter", text);
+            }
+        }
+
+        $(".sendmessage").click(function () {
+            if (count < 20) {
+                alert("선택하신 보호명단이 20명이 안됩니다!");
+                return false;
+            } else {
+
+                fb_share(getList());
+            }
+        });
+
+        $(".copymessage").click(function () {
+            copyToClipboard();
+        });
+    });
+
+</script>
 </html>
