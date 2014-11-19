@@ -149,3 +149,6 @@ img.grayscale:hover, img.grayscale.disable {
     -webkit-filter: grayscale(0%);
 }
 
+.players-container {
+    display: none;
+}

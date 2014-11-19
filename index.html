@@ -129,16 +129,14 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h2>보호 선수 명단 만들기
-                <small>KT 특별지명</small>
+                <small></small>
             </h2>
         </div>
         <div class="panel-body">
             <ul class="team-btn-container">
-                <li><a href="#" class="teamBtn teamHH"><img class="grayscale disable" src="images/team/emblemB_HH.png"/></a>
-                </li>
                 <li><a href="#" class="teamBtn teamKA"><img class="grayscale" src="images/team/emblemB_HT.png"/></a>
                 </li>
-                <li><a href="#" class="teamBtn teamKT"><img class="grayscale" src="images/team/emblemB_KT.png"/></a>
+                <li><a href="#" class="teamBtn teamHH"><img class="grayscale" src="images/team/emblemB_HH.png"/></a>
                 </li>
                 <li><a href="#" class="teamBtn teamLG"><img class="grayscale" src="images/team/emblemB_LG.png"/></a>
                 </li>
@@ -154,16 +152,18 @@
                 </li>
                 <li><a href="#" class="teamBtn teamWO"><img class="grayscale" src="images/team/emblemB_WO.png"/></a>
                 </li>
+                <li><a href="#" class="teamBtn teamKT"><img class="grayscale" src="images/team/emblemB_KT.png"/></a>
+                </li>
             </ul>
             <div class="clear"></div>
-            <div id="board">
-                <h3>현재보호선수: <span class="player-count">0</span>명 / 20명</h3>
-            </div>
-            <div class="clear"></div>
 
-            <div class="row">
+            <div class="row players-container">
                 <div class="col-xs-4">
-                    <div id="myPick">
+                    <div id="board">
+                        <h3>현재보호선수: <span class="player-count">0</span>명 / 20명</h3>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="myPick">
                         <button class="sendmessage">
                             페이스북에 결과올리기
                         </button>
@@ -177,6 +177,7 @@
                     </div>
                 </div>
                 <div class="col-xs-8">
+                    <div>
                     <h2>투수</h2>
 
                     <div id="pitcher">
@@ -189,24 +190,22 @@
                     <div id="batter">
                     </div>
                     <div class="clear"></div>
-                    <h2>내야수</h2>
 
                     <div id="in">
 
                     </div>
 
                     <div class="clear"></div>
-                    <h2>외야수</h2>
 
                     <div id="out">
 
                     </div>
 
                     <div class="clear"></div>
-                    <h2>포수</h2>
 
                     <div id="catcher">
 
+                    </div>
                     </div>
                 </div>
             </div>
@@ -327,7 +326,7 @@
                 if (arr[i].stat == "FA") {
                     out += '<div class="card-fa ' + id + i + '"><a class="player-card ' + '" href="#">';
                 } else {
-                    out += '<div class="enable-player ' + id + i + '"><a class="player-card ' + '" href="#">';
+                    out += '<div class="' + id + i + '"><a class="player-card ' + '" href="#">';
                 }
                 if (arr[i].stat == "FA") {
                     out += '<span class="player-watermark">FA</span>';
@@ -404,7 +403,7 @@
                     "padding": "5px"
                 });
                 $(this).css({
-                    "background": "#000000",
+                    "background": "#000000"
                 });
                 $(this).parent().clone().removeClass("active").appendTo($(".myPickContainer"));
             }
@@ -465,6 +464,7 @@
             var team = $(this).attr("class");
             team = team.replace("teamBtn ", "");
 
+            $(".players-container").css({"display": "block"});
             getTeam(team);
         })
 
@@ -474,8 +474,8 @@
         gap = Math.floor(gap / (1000 * 60 * 60 * 24)) * -1;
         $(".dday").html(gap);
 
-        $(".teamBtn img").gray();
-        getTeam("KA");
+        $(".teamBtn img").addClass("disable");
+
 
 
     });
