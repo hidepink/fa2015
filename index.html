@@ -15,7 +15,7 @@
 
     <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="../../Downloads/Baseball_My_Team%202/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -84,9 +84,20 @@
         class="fb-like"
         data-share="true"
         data-width="450"
-        data-show-faces="true"></div>
+        data-show-faces="true">
+</div>
+<h2>올해의 FA 선수들</h2>
+
+<p>원 소속팀 협상기간: 11월 20일 ~ 11월 26일</p>
+
+<div id="fa-players">
+    <img src="images/fa/fa-01.jpeg" alt=""/>
+</div>
+
+<div class="clear"></div>
+
 <div id="board">
-    <h1><img src="../../Downloads/Baseball_My_Team%202/images/kia/logo.jpg"/> 20인 보호명단 뽑아보기</h1>
+    <img src="images/kia/logo.jpg"/>
 
     <h3>현재보호선수: <span class="player-count">0</span>명 / 20명</h3>
 </div>
@@ -139,11 +150,31 @@
 </div>
 </body>
 
-<script src="../../Downloads/Baseball_My_Team%202/data/kia.json"></script>
+<script src="data/kia.json"></script>
+<script src="data/fa.json"></script>
 <script>
     $(document).ready(function () {
         var count = 0;
 
+        function getFAPlayers(arr, id) {
+            var out = "";
+            var i;
+            var path = "images/fa/";
+
+            for (i = 0; i < arr.length; i++) {
+                out += '<div class="fa ' + id + i + '"><a class="fa-player-card ' + '" href="#">';
+
+                if (arr[i].stat == "re") {
+                    out += '<span class="fa-player-watermark">재계약</span>';
+                } else if (arr[i].stat != undefined) {
+                    out += '<span class="fa-player-watermark">' + arr[i].stat + '</span>';
+                }
+
+                out += '<img class="fa-player-image" src="' + path + arr[i].img + '.jpeg"/>' +
+                '<span class="player-text"> ' + arr[i].name + '(' + arr[i].team + ')</span>' + '</a></div>';
+            }
+            $("#" + id).html(out);
+        }
         function getPlayers(arr, id) {
             var out = "";
             var i;
@@ -195,6 +226,7 @@
             });
         }
 
+        getFAPlayers(arrFAPlayers, "fa-players")
         getPlayers(arrPitchers, "pitcher");
         getPlayers(arrOutfilders, "out");
         getPlayers(arrInfilders, "in");

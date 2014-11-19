@@ -1,5 +1,5 @@
 body {
-    font-family: "Nanum-Gothic", "나눔고딕"
+    font-family: "Nanum-Gothic", "나눔고딕", "Apple SD Gothic", sans-serif;
 }
 
 a {
@@ -11,7 +11,7 @@ a {
 .player-card {
     position: relative;
     float: left;
-    width: 50px;
+    width: 55px;
     height: 70px;
     border: 1px solid #eeeeee;
     padding: 5px;
@@ -37,5 +37,32 @@ a {
     font-size: 12px;
     font-weight: 700;
     background: #eeee55;
+    color: #000000;
+}
+
+/* fa 플레이어 카드 */
+.fa-player-card {
+    position: relative;
+    float: left;
+    width: 100px;
+    height: 120px;
+    border: 1px solid #eeeeee;
+    padding: 5px;
+    background: #ffffff;
+    text-align: center;
+}
+
+.fa-player-image {
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+}
+
+.fa-player-watermark {
+    position: absolute;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid #888888;
+    background: #ffee99;
     color: #000000;
 }
