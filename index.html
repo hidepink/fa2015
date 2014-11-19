@@ -158,7 +158,7 @@
             <div class="clear"></div>
 
             <div class="row players-container">
-                <div class="col-xs-4">
+                <div class="col-xs-12 col-sm-4">
                     <div id="board">
                         <h3>현재보호선수: <span class="player-count">0</span>명 / 20명</h3>
                     </div>
@@ -170,14 +170,17 @@
                         <button class="copymessage">
                             클립보드에 복사하기
                         </button>
+                        <button class="clearMyContainer">
+                            선택 모두 지우기
+                        </button>
                         <div class="clear"></div>
                         <h2>나의 선택</h2>
 
                         <div class="myPickContainer"></div>
                     </div>
                 </div>
-                <div class="col-xs-8">
-                    <div>
+                <div class="col-xs-12 col-sm-8">
+                    <div class="team-players-container">
                     <h2>투수</h2>
 
                     <div id="pitcher">
@@ -223,6 +226,7 @@
 <script>
     $(document).ready(function () {
         var count = 0;
+        var team;
 
         function getFAPlayers(arr, id) {
             var out = "";
@@ -373,7 +377,7 @@
             event.stopPropagation();
 
             if ($(this).hasClass("active")) {
-                $(".myPickContainer").find("." + $(this).parent().attr("class")).hide();
+                $(".myPickContainer").find("." + $(this).parent().attr("class")).remove();
 
                 $("." + $(this).parent().attr("class") + " > a").removeClass("active");
                 $("." + $(this).parent().attr("class") + " > a").css({
@@ -461,7 +465,7 @@
             $(".grayscale").removeClass("disable");
             $(this).find(".grayscale").addClass("disable");
 
-            var team = $(this).attr("class");
+            team = $(this).attr("class");
             team = team.replace("teamBtn ", "");
 
             $(".players-container").css({"display": "block"});
@@ -476,7 +480,9 @@
 
         $(".teamBtn img").addClass("disable");
 
-
+        $(".clearMyContainer").click(function () {
+            getTeam(team);
+        })
 
     });
 </script>
