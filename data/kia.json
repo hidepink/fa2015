@@ -105,7 +105,7 @@ var arrPitchers = [
 {
 "name": "어센시오", "pay": "", "stat": "외국인", "img": "p33"},
 {"name": "토마스", "pay": "", "stat": "외국인", "img": "p34"}
-];
+]
 
 var arrOutfilders = [
 {"name": "김다원", "pay": "2800", "img": "o1"
@@ -173,7 +173,7 @@ var arrOutfilders = [
 {
 "name": "임한용", "pay": "2700", "img": "o20"},
 {"name": "장운영", "pay": "2400", "img": "o21"}
-];
+]
 
 var arrInfilders = [
 {"name": "강한울", "pay": "2400", "img": "i1"
