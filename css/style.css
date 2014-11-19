@@ -154,6 +154,4 @@ img.grayscale:hover, img.grayscale.disable {
 }
 
 .team-players-container {
-    max-height: 750px;
-    overflow-y: scroll;
 }
