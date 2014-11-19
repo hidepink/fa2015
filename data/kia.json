@@ -107,7 +107,7 @@ var kiaPitchers = [
 {"name": "토마스", "pay": "", "stat": "외국인", "img": "p34.png"}
 ]
 
-var kiaOutfilders = [
+var kiaOutfielders = [
 {"name": "김다원", "pay": "2800", "img": "o1.png"
 }
 ,
@@ -175,7 +175,7 @@ var kiaOutfilders = [
 {"name": "장운영", "pay": "2400", "img": "o21.png"}
 ]
 
-var kiaInfilders = [
+var kiaInfielders = [
 {"name": "강한울", "pay": "2400", "img": "i1.png"
 }
 ,
@@ -615,3 +615,299 @@ var ssBatters = [
 "name": "나바로", "img": "b10.jpg", "stat": "외국인"}
 
 ];
+
+var skPitchers = [
+{"name": "이재영", "img": "p27.jpg", "stat": "FA"
+}
+,
+{
+"name": "고효준", "img": "p1.jpg"
+}
+,
+{
+"name": "김광현", "img": "p2.jpg"
+}
+,
+{
+"name": "김대유", "img": "p3.jpg"
+}
+,
+{
+"name": "김정빈", "img": "p4.jpg"
+}
+,
+{
+"name": "김태훈", "img": "p5.jpg"
+}
+,
+{
+"name": "문광은", "img": "p6.jpg"
+}
+,
+{
+"name": "박규민", "img": "p7.jpg"
+}
+,
+{
+"name": "박민호", "img": "p8.jpg"
+}
+,
+{
+"name": "박정배", "img": "p9.jpg"
+}
+,
+{
+"name": "박종훈", "img": "p10.jpg"
+}
+,
+{
+"name": "박희수", "img": "p11.jpg"
+}
+,
+{
+"name": "백인식", "img": "p12.jpg"
+}
+,
+{
+"name": "벤와트", "img": "p13.jpg"
+}
+,
+{
+"name": "서동민", "img": "p14.jpg"
+}
+,
+{
+"name": "서진용", "img": "p15.jpg"
+}
+,
+{
+"name": "엄정욱", "img": "p16.jpg"
+}
+,
+{
+"name": "여건욱", "img": "p17.jpg"
+}
+,
+{
+"name": "오수호", "img": "p18.jpg"
+}
+,
+{
+"name": "유영하", "img": "p19.jpg"
+}
+,
+{
+"name": "윤길현", "img": "p20.jpg"
+}
+,
+{
+"name": "윤석주", "img": "p21.jpg"
+}
+,
+{
+"name": "윤희상", "img": "p22.jpg"
+}
+,
+{
+"name": "이건욱", "img": "p23.jpg"
+}
+,
+{
+"name": "이상백", "img": "p24.jpg"
+}
+,
+{
+"name": "이석재", "img": "p25.jpg"
+}
+,
+{
+"name": "이승진", "img": "p26.jpg"
+}
+,
+{
+"name": "이창욱", "img": "p28.jpg"
+}
+,
+{
+"name": "이한진", "img": "p29.jpg"
+}
+,
+{
+"name": "전병두", "img": "p30.jpg"
+}
+,
+{
+"name": "전유수", "img": "p31.jpg"
+}
+,
+{
+"name": "정우람", "img": "p32.jpg"
+}
+,
+{
+"name": "진해수", "img": "p33.jpg"
+}
+,
+{
+"name": "채병용", "img": "p34.jpg"
+}
+,
+{
+"name": "허건엽", "img": "p35.jpg"}
+];
+
+var skInfielders = [
+{"name": "최정", "img": "i18.jpg", "stat": "FA"
+}
+,
+{
+"name": "나주환", "img": "i3.jpg", "stat": "FA"
+}
+,
+{
+"name": "김성현", "img": "i1.jpg"
+}
+,
+{
+"name": "김연훈", "img": "i2.jpg"
+}
+,
+{
+"name": "박계현", "img": "i4.jpg"
+}
+,
+{
+"name": "박상현", "img": "i5.jpg"
+}
+,
+{
+"name": "박윤", "img": "i6.jpg"
+}
+,
+{
+"name": "박인성", "img": "i7.jpg"
+}
+,
+{
+"name": "박정권", "img": "i8.jpg"
+}
+,
+{
+"name": "박진만", "img": "i9.jpg"
+}
+,
+{
+"name": "박철우", "img": "i10.jpg"
+}
+,
+{
+"name": "신현철", "img": "i11.jpg"
+}
+,
+{
+"name": "안정광", "img": "i12.jpg"
+}
+,
+{
+"name": "유서준", "img": "i13.jpg"
+}
+,
+{
+"name": "이대수", "img": "i14.jpg"
+}
+,
+{
+"name": "임재현", "img": "i15.jpg"
+}
+,
+{
+"name": "조성모", "img": "i16.jpg"
+}
+,
+{
+"name": "조성우", "img": "i17.jpg"
+}
+,
+{
+"name": "최정민", "img": "i19.jpg"
+}
+,
+{
+"name": "한동민", "img": "i20.jpg"
+}
+,
+{
+"name": "홍명찬", "img": "i21.jpg"}
+];
+
+var skOutfielders = [
+{"name": "김강민", "img": "o1.jpg", "stat": "FA"
+}
+,
+{
+"name": "조동화", "img": "o14.jpg", "stat": "FA"
+}
+,
+{
+"name": "김강석", "img": "o2.jpg"
+}
+,
+{
+"name": "김기현", "img": "o3.jpg"
+}
+,
+{
+"name": "김도현", "img": "o4.jpg"
+}
+,
+{
+"name": "김상현", "img": "o5.jpg"
+}
+,
+{
+"name": "김재현", "img": "o6.jpg"
+}
+,
+{
+"name": "나세원", "img": "o7.jpg"
+}
+,
+{
+"name": "박재상", "img": "o8.jpg"
+}
+,
+{
+"name": "안치용", "img": "o9.jpg"
+}
+,
+{
+"name": "윤중환", "img": "o10.jpg"
+}
+,
+{
+"name": "이명기", "img": "o11.jpg"
+}
+,
+{
+"name": "이진석", "img": "o12.jpg"
+}
+,
+{
+"name": "임훈", "img": "o13.jpg"
+}
+,
+{
+"name": "조용호", "img": "o15.jpg"}
+]
+
+var skCatchers = [
+{"name": "김민식", "img": "c1.jpg"},
+{"name": "김정훈", "img": "c2.jpg"},
+{"name": "김제성", "img": "c3.jpg"},
+{"name": "이윤재", "img": "c4.jpg"},
+{"name": "이재원", "img": "c5.jpg"},
+{"name": "정상호", "img": "c6.jpg"},
+{"name": "조우형", "img": "c7.jpg"},
+{"name": "허웅", "img": "c8.jpg"}
+
+]

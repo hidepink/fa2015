@@ -127,11 +127,16 @@
     </div>
 
     <div class="panel panel-default">
+
         <div class="panel-heading">
-            <h2>보호 선수 명단 만들기
-                <small></small>
-            </h2>
+            <h2>보호 선수 명단 만들기</h2>
+
+            <ul class="nav nav-pills">
+                <li class="active"><a href="#" class="typeBtn">KT특별지명(20인보호)</a></li>
+                <li><a href="#man24" class="typeBtn">FA보상선수(24인보호)</a></li>
+            </ul>
         </div>
+        <div class="clear"></div>
         <div class="panel-body">
             <ul class="team-btn-container">
                 <li><a href="#" class="teamBtn teamKA"><img class="grayscale" src="images/team/emblemB_HT.png"/></a>
@@ -159,8 +164,9 @@
 
             <div class="row players-container">
                 <div class="col-xs-12 col-sm-4">
+
                     <div id="board">
-                        <h3>현재보호선수: <span class="player-count">0</span>명 / 20명</h3>
+                        <h3>현재보호선수: <span class="player-count">0</span>명/<span class="player-count-max">20</span>명</h3>
                     </div>
                     <div class="clear"></div>
                     <div class="myPick">
@@ -226,6 +232,7 @@
 <script>
     $(document).ready(function () {
         var count = 0;
+        var countMax = 20;
         var team;
 
         function getFAPlayers(arr, id) {
@@ -275,8 +282,8 @@
             switch (teamname) {
                 case "teamKA":
                     getPlayers("KA", kiaPitchers, "pitcher");
-                    getPlayers("KA", kiaOutfilders, "out");
-                    getPlayers("KA", kiaInfilders, "in");
+                    getPlayers("KA", kiaOutfielders, "out");
+                    getPlayers("KA", kiaInfielders, "in");
                     getPlayers("KA", kiaCatchers, "catcher");
                     break;
                 case "teamSS":
@@ -298,6 +305,10 @@
                 case "teamKT":
                     break;
                 case "teamSK":
+                    getPlayers("SK", skPitchers, "pitcher");
+                    getPlayers("SK", skOutfielders, "out");
+                    getPlayers("SK", skInfielders, "in");
+                    getPlayers("SK", skCatchers, "catcher");
                     break;
             }
         }
@@ -390,8 +401,8 @@
                     // $(".myPickContainer").html('<h3>아직 아무도 선택하지 않았습니다.</h3>');
                 }
             } else {
-                if (count >= 20) {
-                    alert("보호명단 20명을 모두 선택했습니다!");
+                if (count >= countMax) {
+                    alert("보호명단 " + countMax + "명을 모두 선택했습니다!");
                     return false;
                 }
                 if ($(this).parent().hasClass("card-fa")) {
@@ -446,8 +457,8 @@
         }
 
         $(".sendmessage").click(function () {
-            if (count < 20) {
-                alert("선택하신 보호명단이 20명이 안됩니다!");
+            if (count < countMax) {
+                alert("선택하신 보호명단이 " + countMax + "명이 안됩니다!");
                 return false;
             } else {
 
@@ -462,14 +473,22 @@
         $(".teamBtn").click(function () {
             event.preventDefault();
             event.stopPropagation();
-            $(".grayscale").removeClass("disable");
-            $(this).find(".grayscale").addClass("disable");
 
-            team = $(this).attr("class");
-            team = team.replace("teamBtn ", "");
+            var r = true;
+            if (count > 0) {
+                var r = confirm("선택하신 보호명단이 모두 삭제됩니다.");
+            }
+            if (r == true) {
+                $(".grayscale").removeClass("disable");
+                $(this).find(".grayscale").addClass("disable");
 
-            $(".players-container").css({"display": "block"});
-            getTeam(team);
+                team = $(this).attr("class");
+                team = team.replace("teamBtn ", "");
+
+                $(".players-container").css({"display": "block"});
+                getTeam(team);
+
+            }
         })
 
         var now = new Date();
@@ -481,9 +500,42 @@
         $(".teamBtn img").addClass("disable");
 
         $(".clearMyContainer").click(function () {
-            getTeam(team);
+
+            var r = true;
+            if (count > 0) {
+                var r = confirm("선택하신 보호명단이 모두 삭제됩니다.");
+            }
+            if (r == true) {
+                getTeam(team);
+            }
         })
 
+        $(".typeBtn").click(function () {
+            event.preventDefault();
+            event.stopPropagation();
+
+            var r = true;
+            if (count > 0) {
+                var r = confirm("선택하신 보호명단이 모두 삭제됩니다.");
+            }
+
+            if (r == true) {
+                if ($(this).parent().index() != 0) {
+                    $(".typeBtn").eq(0).parent().removeClass("active");
+                    $(".typeBtn").eq(1).parent().addClass("active");
+
+                    countMax = 24;
+                } else {
+                    $(".typeBtn").eq(0).parent().addClass("active");
+                    $(".typeBtn").eq(1).parent().removeClass("active");
+
+                    countMax = 20;
+                }
+                $(".player-count-max").html(countMax);
+
+                getTeam(team);
+            }
+        })
     });
 </script>
 </html>

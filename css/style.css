@@ -30,7 +30,8 @@ a {
 
 .player-image {
     width: 100%;
-
+    height: 70px;
+    overflow: hidden;
 }
 
 .fixed {
