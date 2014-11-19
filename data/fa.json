@@ -1,21 +1,21 @@
 var arrFAPlayers = [
-{"name": "윤성환", "team": "삼성", "img": "fa-01", "stat": "KIA"
+{"name": "윤성환", "team": "삼성", "img": "fa-01", "stat": "KIA", "trade": "박경태"
 }
 ,
 {
-"name": "권혁", "team": "삼성", "img": "fa-02", "stat": "yet"
+"name": "권혁", "team": "삼성", "img": "fa-02", "stat": "re"
 }
 ,
 {
-"name": "안지만", "team": "삼성", "img": "fa-03", "stat": "yet"
+"name": "안지만", "team": "삼성", "img": "fa-03", "stat": "re"
 }
 ,
 {
-"name": "조동찬", "team": "삼성", "img": "fa-04", "stat": "넥센"
+"name": "조동찬", "team": "삼성", "img": "fa-04", "stat": "한화", "trade": "현금"
 }
 ,
 {
-"name": "배영수", "team": "삼성", "img": "fa-05", "stat": "롯데"
+"name": "배영수", "team": "삼성", "img": "fa-05", "stat": "KT", "trade": "현금"
 }
 ,
 {
@@ -35,7 +35,7 @@ var arrFAPlayers = [
 }
 ,
 {
-"name": "최정", "team": "SK", "img": "fa-10", "stat": "yet"
+"name": "최정", "team": "SK", "img": "fa-10", "stat": "LG", "trade": "정의윤"
 }
 ,
 {
@@ -63,7 +63,7 @@ var arrFAPlayers = [
 }
 ,
 {
-"name": "송은범", "team": "KIA", "img": "fa-17", "stat": "yet"
+"name": "송은범", "team": "KIA", "img": "fa-17", "stat": "re"
 }
 ,
 {

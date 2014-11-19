@@ -7,7 +7,7 @@
     Remove this if you use the .htaccess -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>20인 보호명단뽑기!</title>
+    <title>프로야구 스토브리그 놀이</title>
     <meta name="description" content="">
     <meta name="author" content="Sehwan Kim">
 
@@ -196,18 +196,27 @@
             var path = "images/fa/";
 
             for (i = 0; i < arr.length; i++) {
-                out += '<div class="thumbnail fa ' + id + i + '"><a class="fa-player-card ' + '" href="#">';
 
                 if (arr[i].stat == "re") {
+                    out += '<div class="thumbnail fa ' + id + i + '"><a class="fa-player-card ' + '" href="#">';
                     out += '<span class="fa-player-watermark fa-re">재계약</span>';
                 } else if (arr[i].stat == "yet") {
+                    out += '<div class="thumbnail fa ' + id + i + '"><a class="fa-player-card ' + '" href="#">';
                     out += '<span class="fa-player-watermark fa-yet">영입가능</span>';
                 } else {
+                    out += '<div class="thumbnail fa ' + id + i + '"><a class="fa-moved-player-card ' + '" href="#">';
                     out += '<span class="fa-player-watermark fa-move">' + arr[i].stat + '</span>';
                 }
 
                 out += '<div class="fa-player-image"><img src="' + path + arr[i].img + '.jpeg"/></div>' +
-                '<div class="caption player-text"> ' + arr[i].name + '(' + arr[i].team + ')</div>' + '</a></div>';
+                '<div class="caption"> ' + arr[i].name + '(' + arr[i].team + ')';
+
+                if (arr[i].stat != "re" && arr[i].stat != "yet") {
+                    out += '<br><span class="label label-default"><span class="label label-danger">보상</span> ' + arr[i].trade + '</span></div></div></a></div>';
+                } else {
+                    out += '</div></a></div>';
+                }
+
             }
             $("#" + id).html(out);
         }

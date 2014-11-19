@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" uploadOnCheckin="018c5017-13d5-4d48-860f-16425994efaf">
+  <component name="PublishConfigData" serverName="Dongmools.com" uploadOnCheckin="018c5017-13d5-4d48-860f-16425994efaf">
+    <serverData>
+      <paths name="Dongmools.com">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="kimsehwan.com">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/www/fa2015" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
     <option name="myUploadOnCheckinName" value="kimsehwan.com" />
   </component>
 </project>
