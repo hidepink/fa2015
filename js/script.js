@@ -18,7 +18,7 @@ $(document).ready(function () {
                 out += '<span class="fa-player-watermark fa-re">재계약</span>';
             } else if (arr[i].stat == "yet") {
                 out += '<div class="thumbnail fa ' + id + i + '"><a class="fa-player-card ' + '" href="#">';
-                out += '<span class="fa-player-watermark fa-yet">영입가능</span>';
+                // out += '<span class="fa-player-watermark fa-yet">영입가능</span>';
             } else {
                 out += '<div class="thumbnail fa ' + id + i + '"><a class="fa-player-card fa-moved-player-card ' + '" href="#">';
                 out += '<span class="fa-player-watermark fa-move">' + arr[i].stat + '</span>';
@@ -64,6 +64,10 @@ $(document).ready(function () {
             case "teamDS":
                 break;
             case "teamHH":
+                getPlayers("HH", hhPitchers, "pitcher");
+                getPlayers("HH", hhOutfielders, "out");
+                getPlayers("HH", hhInfielders, "in");
+                getPlayers("HH", hhCatchers, "catcher");
                 break;
             case "teamNC":
                 break;
@@ -120,8 +124,12 @@ $(document).ready(function () {
             if (arr[i].stat == "외국인") {
                 out += '<span class="player-watermark">외</span>';
             }
-            out += '<img class="player-image" src="' + path + arr[i].img + '"/>' +
-            '<span class="player-text">' + arr[i].name + '</span>' + '</a></div>';
+            if (arr[i].img != null) {
+                out += '<img class="player-image" src="' + path + arr[i].img + '"/>';
+            } else {
+                out += '<img class="player-image" src="' + "images/team/emblemB_" + team + '.png"/>';
+            }
+            out += '<span class="player-text">' + arr[i].name + '</span>' + '</a></div>';
         }
 
 
