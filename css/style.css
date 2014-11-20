@@ -3,7 +3,7 @@ body {
     background: #666666 !important;
     position: relative;
 }
-}
+
 
 ul, li {
     list-style: none;
@@ -155,4 +155,9 @@ img.grayscale:hover, img.grayscale.disable {
 }
 
 .team-players-container {
+}
+
+.player-text-btn {
+    display: inline;
+    position: relative;
 }

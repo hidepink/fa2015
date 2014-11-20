@@ -105,7 +105,7 @@ var kiaPitchers = [
 {
 "name": "어센시오", "pay": "", "stat": "외국인", "img": "p33.png"},
 {"name": "토마스", "pay": "", "stat": "외국인", "img": "p34.png"}
-]
+];
 
 var kiaOutfielders = [
 {"name": "김다원", "pay": "2800", "img": "o1.png"
