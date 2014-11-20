@@ -46,6 +46,11 @@ $(document).ready(function () {
                 alert("FA는 보호명단에 묶이지 않습니다");
                 return false;
             }
+
+            if ($(this).parent().hasClass("card-fa")) {
+                alert("FA는 보호명단에 묶이지 않습니다");
+                return false;
+            }
             $(this).addClass("active");
 
             count++;
@@ -105,8 +110,14 @@ $(document).ready(function () {
             team = $(this).attr("class");
             team = team.replace("teamBtn ", "");
 
-            $(".players-container").css({"display": "block"});
-            getTeam(team);
+
+            if (team == "teamKT") {
+                alert("KT 위즈는 신생팀입니다.");
+                return;
+            } else {
+                $(".players-container").css({"display": "block"});
+                getTeam(team);
+            }
 
         }
     })
@@ -194,7 +205,6 @@ function getFAPlayers(arr, id) {
 }
 
 function getTeam(teamname) {
-
     /* 내용 삭제 하기 */
     $("#pitcher").empty();
     $("#in").empty();
@@ -219,6 +229,10 @@ function getTeam(teamname) {
             getPlayers("SS", ssBatters, "batter");
             break;
         case "teamDS":
+            getPlayers("DS", dsPitchers, "pitcher");
+            getPlayers("DS", dsOutfielders, "out");
+            getPlayers("DS", dsInfielders, "in");
+            getPlayers("DS", dsCatchers, "catcher");
             break;
         case "teamHH":
             getPlayers("HH", hhPitchers, "pitcher");
@@ -227,8 +241,16 @@ function getTeam(teamname) {
             getPlayers("HH", hhCatchers, "catcher");
             break;
         case "teamNC":
+            getPlayers("NC", ncPitchers, "pitcher");
+            getPlayers("NC", ncOutfielders, "out");
+            getPlayers("NC", ncInfielders, "in");
+            getPlayers("NC", ncCatchers, "catcher");
             break;
         case "teamNX":
+            getPlayers("NX", nxPitchers, "pitcher");
+            getPlayers("NX", nxOutfielders, "out");
+            getPlayers("NX", nxInfielders, "in");
+            getPlayers("NX", nxCatchers, "catcher");
             break;
         case "teamLT":
             getPlayers("LT", ltPitchers, "pitcher");
@@ -302,11 +324,11 @@ function getPlayers(team, arr, id) {
 }
 
 function getList() {
-    var str = "내가 뽑은 보호선수 명단:";
+    var str = "";
     var strMax = $(".myPickContainer").contents().size();
 
     for (i = 0; i < strMax; i++) {
-        str += $(".myPickContainer").children().eq(i).find(".player-text").html();
+        str += $(".myPickContainer").children().eq(i).find(".player-text").html() + " ";
     }
 
     return str;

@@ -1,111 +1,58 @@
 var kiaPitchers = [
-{"name": "고영창", "pay": "2500", "img": "p1.png"
+{"img": "p1.png", "name": "고영창", "pay" : "2500"},{"img": "p2.png", "name" : "곽정철", "pay": "7000"},{"img" : "p3.png", "name": "김병현", "pay": "20000"}
+,
+{
+"img": "p4.png", "name": "김준", "pay": "2800"
 }
 ,
 {
-"name": "곽정철", "pay": "7000", "img": "p2.png"
+"img": "p5.png", "name": "김지훈", "pay": "2400"},
+{"img": "p6.png", "name": "김진우", "pay" : "13000"},{"img": "p7.png", "name" : "김태영", "pay": "8000"},{"img" : "p8.png", "name": "박상옥", "pay": "2400"}
+,
+{
+"img": "p9.png", "name": "박성호", "pay": "3300"
 }
 ,
 {
-"name": "김병현", "pay": "20000", "img": "p3.png"}
-,
-{
-"name": "김준", "pay": "2800", "img": "p4.png"
+"img": "p10.png", "name": "박준표", "pay": "2700"},
+{"img": "p11.png", "name": "박지훈", "pay" : "5500"},{"img": "p12.png", "name" : "서재응", "pay": "20000"},{"img" : "p13.png", "name": "송은범", "pay": "30000", "stat": "FA"
 }
 ,
 {
-"name": "김지훈", "pay": "2400", "img": "p5.png"},
-{"name": "김진우", "pay": "13000", "img": "p6.png"
+"img": "p14.png", "name": "신창호", "pay": "3700"
+}
+,
+{"img": "p15.png", "name": "심동섭", "pay" : "5000"},{"img": "p16.png", "name" : "양현종", "pay": "12000"},{"img" : "p17.png", "name": "이다샘", "pay": "2400"
+},{"img": "p18.png", "name": "이대환", "pay": "4000"
 }
 ,
 {
-"name": "김태영", "pay": "8000", "img": "p7.png"
+"img": "p19.png", "name": "이범석", "pay": "4000"
+}
+,
+{"img": "p20.png", "name": "이정훈", "pay" : "2900"},{"img": "p21.png", "name" : "임기준", "pay": "2500"},{"img" : "p22.png", "name": "임준섭", "pay": "6000"
+},{"img": "p23.png", "name": "임준혁", "pay": "4300"
 }
 ,
 {
-"name": "박상옥", "pay": "2400", "img": "p8.png"}
+"img": "p24.png", "name": "전우엽", "pay": "3000"
+}
 ,
-{
-"name": "박성호", "pay": "3300", "img": "p9.png"
+{"img": "p25.png", "name": "정용운", "pay" : "2700"},{"img": "p26.png", "name" : "정정환", "pay": "2400"},{"img" : "p27.png", "name": "차명진", "pay": "2400"
+},{"img": "p28.png", "name": "최영필", "pay": "7000"
 }
 ,
 {
-"name": "박준표", "pay": "2700", "img": "p10.png"},
-{"name": "박지훈", "pay": "5500", "img": "p11.png"
+"img": "p29.png", "name": "최현정", "pay": ""
 }
 ,
-{
-"name": "서재응", "pay": "20000", "img": "p12.png"
+{"img": "p30.png", "name": "한기주", "pay" : "8000"},{"img": "p31.png", "name" : "한승혁", "pay": "3200"},{"img" : "p32.png", "name": "홍건희", "pay": "2800"
+},{"img": "p33.png", "name": "어센시오", "pay": "", "stat": "외국인"
 }
 ,
-{
-"name": "송은범", "pay": "30000", "img": "p13.png", "stat": "FA"
+{"img": "p34.png", "name": "토마스", "pay" : "", "stat": "외국인"
 }
-,
-{
-"name": "신창호", "pay": "3700", "img": "p14.png"},
-{"name": "심동섭", "pay": "5000", "img": "p15.png"
-}
-,
-{
-"name": "양현종", "pay": "12000", "img": "p16.png"
-}
-,
-{
-"name": "이다샘", "pay": "2400", "img": "p17.png"}
-,
-{
-"name": "이대환", "pay": "4000", "img": "p18.png"
-}
-,
-{
-"name": "이범석", "pay": "4000", "img": "p19.png"},
-{"name": "이정훈", "pay": "2900", "img": "p20.png"
-}
-,
-{
-"name": "임기준", "pay": "2500", "img": "p21.png"
-}
-,
-{
-"name": "임준섭", "pay": "6000", "img": "p22.png"}
-,
-{
-"name": "임준혁", "pay": "4300", "img": "p23.png"
-}
-,
-{
-"name": "전우엽", "pay": "3000", "img": "p24.png"},
-{"name": "정용운", "pay": "2700", "img": "p25.png"
-}
-,
-{
-"name": "정정환", "pay": "2400", "img": "p26.png"
-}
-,
-{
-"name": "차명진", "pay": "2400", "img": "p27.png"}
-,
-{
-"name": "최영필", "pay": "7000", "img": "p28.png"
-}
-,
-{
-"name": "최현정", "pay": "", "img": "p29.png"},
-{"name": "한기주", "pay": "8000", "img": "p30.png"
-}
-,
-{
-"name": "한승혁", "pay": "3200", "img": "p31.png"
-}
-,
-{
-"name": "홍건희", "pay": "2800", "img": "p32.png"}
-,
-{
-"name": "어센시오", "pay": "", "stat": "외국인", "img": "p33.png"},
-{"name": "토마스", "pay": "", "stat": "외국인", "img": "p34.png"}
-];
+]
 
 var kiaOutfielders = [
 {"name": "김다원", "pay": "2800", "img": "o1.png"
