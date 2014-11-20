@@ -1,9 +1,9 @@
 var arrFAPlayers = [
-{"name": "윤성환", "team": "삼성", "img": "fa-01", "stat": "yet"
+{"name": "윤성환", "team": "삼성", "img": "fa-01", "stat": "re"
 }
 ,
 {
-"name": "권혁", "team": "삼성", "img": "fa-02", "stat": "yet"
+"name": "권혁", "team": "삼성", "img": "fa-02", "stat": "KIA", "trade": "박경태"
 }
 ,
 {

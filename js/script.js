@@ -6,148 +6,6 @@ $(document).ready(function () {
     var countMax = 20;
     var team;
 
-    function getFAPlayers(arr, id) {
-        var out = "";
-        var i;
-        var path = "images/fa/";
-
-        for (i = 0; i < arr.length; i++) {
-
-            if (arr[i].stat == "re") {
-                out += '<div class="thumbnail fa ' + id + i + '"><a class="fa-player-card ' + '" href="#">';
-                out += '<span class="fa-player-watermark fa-re">재계약</span>';
-            } else if (arr[i].stat == "yet") {
-                out += '<div class="thumbnail fa ' + id + i + '"><a class="fa-player-card ' + '" href="#">';
-                // out += '<span class="fa-player-watermark fa-yet">영입가능</span>';
-            } else {
-                out += '<div class="thumbnail fa ' + id + i + '"><a class="fa-player-card fa-moved-player-card ' + '" href="#">';
-                out += '<span class="fa-player-watermark fa-move">' + arr[i].stat + '</span>';
-            }
-
-            out += '<div class="fa-player-image"><img src="' + path + arr[i].img + '.jpeg"/></div>' +
-            '<div class="caption"><span class="fa-player-name">' + arr[i].name + '</span>(' + arr[i].team + ')';
-
-            if (arr[i].stat != "re" && arr[i].stat != "yet") {
-                out += '<br><span class="label label-default"><span class="label label-danger">보상</span> ' + arr[i].trade + '</span></div></div></a></div>';
-            } else {
-                out += '</div></a></div>';
-            }
-        }
-        $("#" + id).html(out);
-    }
-
-    function getTeam(teamname) {
-
-        /* 내용 삭제 하기 */
-        $("#pitcher").empty();
-        $("#in").empty();
-        $("#out").empty();
-        $("#catcher").empty();
-        $("#batter").empty();
-        $(".myPickContainer").empty();
-
-        count = 0;
-        $(".player-count").html(count);
-
-
-        switch (teamname) {
-            case "teamKA":
-                getPlayers("KA", kiaPitchers, "pitcher");
-                getPlayers("KA", kiaOutfielders, "out");
-                getPlayers("KA", kiaInfielders, "in");
-                getPlayers("KA", kiaCatchers, "catcher");
-                break;
-            case "teamSS":
-                getPlayers("SS", ssPitchers, "pitcher");
-                getPlayers("SS", ssBatters, "batter");
-                break;
-            case "teamDS":
-                break;
-            case "teamHH":
-                getPlayers("HH", hhPitchers, "pitcher");
-                getPlayers("HH", hhOutfielders, "out");
-                getPlayers("HH", hhInfielders, "in");
-                getPlayers("HH", hhCatchers, "catcher");
-                break;
-            case "teamNC":
-                break;
-            case "teamNX":
-                break;
-            case "teamLT":
-                break;
-            case "teamLG":
-                break;
-            case "teamKT":
-                break;
-            case "teamSK":
-                getPlayers("SK", skPitchers, "pitcher");
-                getPlayers("SK", skOutfielders, "out");
-                getPlayers("SK", skInfielders, "in");
-                getPlayers("SK", skCatchers, "catcher");
-                break;
-        }
-    }
-
-    function getPlayers(team, arr, id) {
-        var out = "";
-        var i;
-        var path;
-
-        switch (id) {
-            case "pitcher":
-                path = "images/" + team + "/p/";
-                break;
-            case "in":
-                path = "images/" + team + "/i/";
-                break;
-            case "out":
-                path = "images/" + team + "/o/";
-                break;
-            case "catcher":
-                path = "images/" + team + "/c/";
-                break;
-            case "batter":
-                path = "images/" + team + "/b/";
-                break;
-        }
-
-
-        for (i = 0; i < arr.length; i++) {
-            if (arr[i].stat == "FA") {
-                out += '<div class="card-fa ' + id + i + '"><a class="player-card ' + '" href="#">';
-            } else {
-                out += '<div class="' + id + i + '"><a class="player-card ' + '" href="#">';
-            }
-            if (arr[i].stat == "FA") {
-                out += '<span class="player-watermark">FA</span>';
-            }
-            if (arr[i].stat == "외국인") {
-                out += '<span class="player-watermark">외</span>';
-            }
-            if (arr[i].img != null) {
-                out += '<img class="player-image" src="' + path + arr[i].img + '"/>';
-            } else {
-                out += '<img class="player-image" src="' + "images/team/emblemB_" + team + '.png"/>';
-            }
-            out += '<span class="player-text">' + arr[i].name + '</span>' + '</a></div>';
-        }
-
-
-        $("#" + id).html(out);
-    }
-
-    function getList() {
-        var str = "내가 뽑은 보호선수 명단:";
-        var strMax = $(".myPickContainer").contents().size();
-
-        for (i = 0; i < strMax; i++) {
-            str += $(".myPickContainer").children().eq(i).find(".player-text").html();
-        }
-
-        return str;
-    }
-
-
     /** 이벤트 처리 **/
     $(".player-card").live("mouseover", function () {
         $(this).css({
@@ -238,6 +96,9 @@ $(document).ready(function () {
             var r = confirm("선택하신 보호명단이 모두 삭제됩니다.");
         }
         if (r == true) {
+
+            count = 0;
+
             $(".grayscale").removeClass("disable");
             $(this).find(".grayscale").addClass("disable");
 
@@ -257,6 +118,8 @@ $(document).ready(function () {
             var r = confirm("선택하신 보호명단이 모두 삭제됩니다.");
         }
         if (r == true) {
+
+            count = 0;
             getTeam(team);
         }
     })
@@ -271,6 +134,9 @@ $(document).ready(function () {
         }
 
         if (r == true) {
+
+            count = 0;
+
             if ($(this).parent().index() != 0) {
                 $(".typeBtn").eq(0).parent().removeClass("active");
                 $(".typeBtn").eq(1).parent().addClass("active");
@@ -296,3 +162,152 @@ $(document).ready(function () {
 
     getFAPlayers(arrFAPlayers, "fa-players");
 });
+
+function getFAPlayers(arr, id) {
+    var out = "";
+    var i;
+    var path = "images/fa/";
+
+    for (i = 0; i < arr.length; i++) {
+
+        if (arr[i].stat == "re") {
+            out += '<div class="fa ' + id + i + '"><a class="fa-player-card ' + '" href="#">';
+            out += '<span class="fa-player-watermark fa-re">재계약</span>';
+        } else if (arr[i].stat == "yet") {
+            out += '<div class="fa ' + id + i + '"><a class="fa-player-card ' + '" href="#">';
+            // out += '<span class="fa-player-watermark fa-yet">영입가능</span>';
+        } else {
+            out += '<div class="fa ' + id + i + '"><a class="fa-player-card fa-moved-player-card ' + '" href="#">';
+            out += '<span class="fa-player-watermark fa-move">' + arr[i].stat + '</span>';
+        }
+
+        out += '<div class="fa-player-image"><img src="' + path + arr[i].img + '.jpeg"/></div>' +
+        '<div class="caption"><span class="fa-player-name">' + arr[i].name + '</span>';
+
+        if (arr[i].stat != "re" && arr[i].stat != "yet") {
+            out += '<span class="label label-default"><span class="label label-danger">보상</span> ' + arr[i].trade + '</span></div></div></a></div>';
+        } else {
+            out += '</div></a></div>';
+        }
+    }
+    $("#" + id).html(out);
+}
+
+function getTeam(teamname) {
+
+    /* 내용 삭제 하기 */
+    $("#pitcher").empty();
+    $("#in").empty();
+    $("#out").empty();
+    $("#catcher").empty();
+    $("#batter").empty();
+    $(".myPickContainer").empty();
+
+    count = 0;
+    $(".player-count").html(count);
+
+
+    switch (teamname) {
+        case "teamKA":
+            getPlayers("KA", kiaPitchers, "pitcher");
+            getPlayers("KA", kiaOutfielders, "out");
+            getPlayers("KA", kiaInfielders, "in");
+            getPlayers("KA", kiaCatchers, "catcher");
+            break;
+        case "teamSS":
+            getPlayers("SS", ssPitchers, "pitcher");
+            getPlayers("SS", ssBatters, "batter");
+            break;
+        case "teamDS":
+            break;
+        case "teamHH":
+            getPlayers("HH", hhPitchers, "pitcher");
+            getPlayers("HH", hhOutfielders, "out");
+            getPlayers("HH", hhInfielders, "in");
+            getPlayers("HH", hhCatchers, "catcher");
+            break;
+        case "teamNC":
+            break;
+        case "teamNX":
+            break;
+        case "teamLT":
+            getPlayers("LT", ltPitchers, "pitcher");
+            getPlayers("LT", ltOutfielders, "out");
+            getPlayers("LT", ltInfielders, "in");
+            getPlayers("LT", ltCatchers, "catcher");
+            break;
+        case "teamLG":
+            getPlayers("LG", lgPitchers, "pitcher");
+            getPlayers("LG", lgOutfielders, "out");
+            getPlayers("LG", lgInfielders, "in");
+            getPlayers("LG", lgCatchers, "catcher");
+            break;
+        case "teamKT":
+            break;
+        case "teamSK":
+            getPlayers("SK", skPitchers, "pitcher");
+            getPlayers("SK", skOutfielders, "out");
+            getPlayers("SK", skInfielders, "in");
+            getPlayers("SK", skCatchers, "catcher");
+            break;
+    }
+}
+
+function getPlayers(team, arr, id) {
+    var out = "";
+    var i;
+    var path;
+
+    switch (id) {
+        case "pitcher":
+            path = "images/" + team + "/p/";
+            break;
+        case "in":
+            path = "images/" + team + "/i/";
+            break;
+        case "out":
+            path = "images/" + team + "/o/";
+            break;
+        case "catcher":
+            path = "images/" + team + "/c/";
+            break;
+        case "batter":
+            path = "images/" + team + "/b/";
+            break;
+    }
+
+
+    for (i = 0; i < arr.length; i++) {
+        if (arr[i].stat == "FA") {
+            out += '<div class="card-fa ' + id + i + '"><a class="player-card ' + '" href="#">';
+        } else {
+            out += '<div class="' + id + i + '"><a class="player-card ' + '" href="#">';
+        }
+        if (arr[i].stat == "FA") {
+            out += '<span class="player-watermark">FA</span>';
+        }
+        if (arr[i].stat == "외국인") {
+            out += '<span class="player-watermark">외</span>';
+        }
+        if (arr[i].img != null) {
+            out += '<img class="player-image" src="' + path + arr[i].img + '"/>';
+        } else {
+            out += '<img class="player-image" src="' + "images/team/emblemB_" + team + '.png"/>';
+        }
+        out += '<span class="player-text">' + arr[i].name + '</span>' + '</a></div>';
+    }
+
+
+    $("#" + id).html(out);
+}
+
+function getList() {
+    var str = "내가 뽑은 보호선수 명단:";
+    var strMax = $(".myPickContainer").contents().size();
+
+    for (i = 0; i < strMax; i++) {
+        str += $(".myPickContainer").children().eq(i).find(".player-text").html();
+    }
+
+    return str;
+}

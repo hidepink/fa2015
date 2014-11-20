@@ -1,8 +1,6 @@
 /**
  * Created by kimsehwan on 14. 11. 20..
  */
-
-
 function copyToClipboard() {
     var text = getList();
     if (window.clipboardData) {
