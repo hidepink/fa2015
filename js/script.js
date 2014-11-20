@@ -20,12 +20,12 @@ $(document).ready(function () {
                 out += '<div class="thumbnail fa ' + id + i + '"><a class="fa-player-card ' + '" href="#">';
                 out += '<span class="fa-player-watermark fa-yet">영입가능</span>';
             } else {
-                out += '<div class="thumbnail fa ' + id + i + '"><a class="fa-moved-player-card ' + '" href="#">';
+                out += '<div class="thumbnail fa ' + id + i + '"><a class="fa-player-card fa-moved-player-card ' + '" href="#">';
                 out += '<span class="fa-player-watermark fa-move">' + arr[i].stat + '</span>';
             }
 
             out += '<div class="fa-player-image"><img src="' + path + arr[i].img + '.jpeg"/></div>' +
-            '<div class="caption"> ' + arr[i].name + '(' + arr[i].team + ')';
+            '<div class="caption"><span class="fa-player-name">' + arr[i].name + '</span>(' + arr[i].team + ')';
 
             if (arr[i].stat != "re" && arr[i].stat != "yet") {
                 out += '<br><span class="label label-default"><span class="label label-danger">보상</span> ' + arr[i].trade + '</span></div></div></a></div>';
@@ -198,12 +198,11 @@ $(document).ready(function () {
 
     });
 
-    $(".player-text").live("click", function () {
-        var event = window.event;
+    $(".fa-player-card").live("click", function () {
         event.preventDefault();
         event.stopPropagation();
 
-        var searchTxt = "http://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&sug=&o=&q=" + encodeURI("야구선수 " + $(this).html());
+        var searchTxt = "http://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&sug=&o=&q=" + encodeURI("야구선수 " + $(this).find(".fa-player-name").html());
         window.open(searchTxt, '', '');
     });
 
