@@ -20,10 +20,6 @@ $(document).ready(function () {
         });
     });
     $(".player-card").live("click", function () {
-        var event = window.event;
-        event.preventDefault();
-        event.stopPropagation();
-
         if ($(this).hasClass("active")) {
             $(".myPickContainer").find("." + $(this).parent().attr("class")).remove();
 
@@ -67,14 +63,19 @@ $(document).ready(function () {
 
         $(".player-count").html(count);
 
+        event.returnValue = false;
+
+        event.preventDefault();
+        event.stopPropagation();
     });
 
     $(".fa-player-card").live("click", function () {
-        event.preventDefault();
-        event.stopPropagation();
-
         var searchTxt = "http://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&sug=&o=&q=" + encodeURI("야구선수 " + $(this).find(".fa-player-name").html());
         window.open(searchTxt, '', '');
+
+        event.returnValue = false;
+        event.preventDefault();
+        event.stopPropagation();
     });
 
 
@@ -93,9 +94,6 @@ $(document).ready(function () {
     });
 
     $(".teamBtn").click(function () {
-        event.preventDefault();
-        event.stopPropagation();
-
         var r = true;
         if (count > 0) {
             var r = confirm("선택하신 보호명단이 모두 삭제됩니다.");
@@ -120,6 +118,10 @@ $(document).ready(function () {
             }
 
         }
+        event.returnValue = false;
+
+        event.preventDefault();
+        event.stopPropagation();
     })
 
     $(".clearMyContainer").click(function () {
@@ -136,8 +138,7 @@ $(document).ready(function () {
     })
 
     $(".typeBtn").click(function () {
-        event.preventDefault();
-        event.stopPropagation();
+
 
         var r = true;
         if (count > 0) {
@@ -163,6 +164,10 @@ $(document).ready(function () {
 
             getTeam(team);
         }
+        event.returnValue = false;
+
+        event.preventDefault();
+        event.stopPropagation();
     })
 
 

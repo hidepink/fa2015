@@ -73,7 +73,8 @@ a {
 
 .fa-player-name {
     display: block;
-    font-size: 12px;
+    font-size: 14px;
+    padding: 5px;
 }
 .fa-moved-player-card {
     position: relative;

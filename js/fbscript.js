@@ -32,11 +32,11 @@ function fb_share(myresultStr) {
         if (response.status === 'connected') {
             var r = confirm("선정결과를 페이스북으로 공유하시겠습니까?");
             if (r == true) {
-                var app_link = "http://kimsehwan.com/kia20/";
-                var app_thumnail = "http://kimsehwan.com/kia20/";
+                var app_link = "http://dongmools.com/fa2015";
+                var app_thumnail = "http://dongmools.com/fa2015";
                 //var app_thumnail="http://ghkdxodn.tistory.com/"+data.image_name;
                 //var app_thumnail="http://ghkdxodn.tistory.com/show_img.php?no="+data.no;
-                FB.api('/me/feed', 'post', {message: myresultStr + "\n" + app_link, link: app_thumnail});
+                FB.api('/me/feed', 'post', {message: myresultStr + "\n" + app_link});
                 //FB.api('/me/feed', 'post', {message: myresultStr+"\n"+app_link});
                 alert('공유되었습니다.\n');
             } else {
